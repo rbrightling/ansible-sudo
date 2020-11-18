@@ -1,0 +1,22 @@
+---
+dependency:
+  name: galaxy
+driver:
+  name: ${MOLE_DRIVER:-podman}
+lint: |
+  set -e
+  yamllint .
+  ansible-lint .
+  flake8
+platforms:
+  - name: instance
+    image: geerlingguy/docker-${MOLECULE_DISTRO:-debian10}-ansible:latest
+    command: ""
+    volumes:
+      - /sys/fs/cgroup:/sys/fs/cgroup:ro
+    pre_build_image: true
+    privileged: ${MOLECULE_PRIVILEGED:-false}
+provisioner:
+  name: ansible
+verifier:
+  name: testinfra

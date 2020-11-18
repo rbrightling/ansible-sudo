@@ -1,0 +1,19 @@
+---
+# default file for debian best distros
+
+sudo__packages: sudo
+
+sudo__sudo_group_name: "sudo"
+
+sudo__sudoers_conf_path: "/etc/sudoers"
+
+sudo__sudoers_directory: "/etc/sudoers.d"
+
+sudo__visudo_path: "/usr/sbin/visudo"
+
+sudo__editor:
+  - /usr/bin/editor
+  - /usr/bin/vim
+  - /usr/bin/vi
+  - /usr/bin/nano
+  - /usr/bin/vim.tiny

@@ -1,0 +1,46 @@
+---
+# tasks file for sudo
+
+- name: Include distribution specific variables.
+  include_vars: "{{ lookup('first_found', params) }}"
+  vars:
+    params:
+      files:
+        - "{{ ansible_distribution | lower }}.yml"
+        - "{{ ansible_os_family | lower }}.yml"
+        - default.yml
+      paths:
+        - '{{ playbook_dir }}/vars'
+        - '{{ role_path }}/vars'
+
+
+- name: install sudo packages
+  package:
+    name: "{{ sudo__packages }}"
+    state: present
+  become: true
+  tags:
+    - install
+
+- name: create sudoers config directory
+  file:
+    path: "{{ sudo__sudoers_directory }}"
+    state: directory
+    mode: '0750'
+    owner: 'root'
+    group: 'root'
+  become: true
+  tags:
+    - setup
+
+- name: template sudoers configuration
+  template:
+    dest: '{{ sudo__sudoers_conf_path }}'
+    src: 'sudoers.j2'
+    mode: '0440'
+    owner: 'root'
+    group: 'root'
+    validate: '{{ sudo__visudo_path }} -cf %s'
+  become: true
+  tags:
+    - configure

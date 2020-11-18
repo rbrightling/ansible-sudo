@@ -1,0 +1,17 @@
+---
+# default file for RedHat based distros
+
+sudo__packages: sudo
+
+sudo__sudo_group_name: "wheel"
+
+sudo__sudoers_conf_path: "/etc/sudoers"
+
+sudo__sudoers_directory: "/etc/sudoers.d"
+
+sudo__visudo_path: "/usr/sbin/visudo"
+
+sudo__editor: 
+  - /usr/bin/vi
+  - /usr/bin/nano
+  - /usr/bin/vim

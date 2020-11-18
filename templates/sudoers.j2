@@ -1,0 +1,205 @@
+{{ ansible_managed | comment }}
+{% macro sudo_defaults_format(option, value) %}
+{% if value is sameas True %}
+Defaults    {{ option }}
+{% elif value is sameas False %}
+Defaults    !{{ option }}
+{% elif value is string %}
+Defaults    {{ option }}="{{value}}"
+{% elif value is iterable %}
+Defaults    {{option }}="{{ value | join(":") }}"
+{% endif %}
+{% endmacro -%}
+
+{% macro sudo_defaults_format_avg(option, value) %}
+{% if value is sameas True %}
+Defaults    {{ option }}
+{% elif value is sameas False %}
+Defaults    !{{ option }}
+{% elif value is string %}
+Defaults    {{ option }}="{{value}}"
+{% elif value is iterable %}
+Defaults    {{option }}="{{ value | join(":") }}"
+{% endif %}
+{% endmacro -%}
+
+#
+# This file MUST be edited with the 'visudo' command as root.
+#
+# Please consider adding local content in /etc/sudoers.d/ instead of
+# directly modifying this file.
+#
+# See the man page for details on how to write a sudoers file.
+
+# Global Defaults
+{{ sudo_defaults_format("query_group_plugin", sudo_query_group_plugin) -}}
+{{ sudo_defaults_format("always_set_home", sudo_always_set_home) -}}
+{{ sudo_defaults_format("authenticate", sudo_authenticate) -}}
+{{ sudo_defaults_format("closefrom_override", sudo_closefrom_override) -}}
+{{ sudo_defaults_format("compress_io", sudo_compress_io) -}}
+{{ sudo_defaults_format("exec_background", sudo_exec_background) -}}
+{{ sudo_defaults_format("env_editor", sudo_env_editor) -}}
+{{ sudo_defaults_format("fast_glob", sudo_fast_glob) -}}
+{{ sudo_defaults_format("fqdn", sudo_fqdn) -}}
+{{ sudo_defaults_format("ignore_dot", sudo_ignore_dot) -}}
+{{ sudo_defaults_format("ignore_local_sudoers", sudo_ignore_local_sudoers) -}}
+{{ sudo_defaults_format("insults", sudo_insults) -}}
+{{ sudo_defaults_format("log_input", sudo_log_input) -}}
+{{ sudo_defaults_format("log_output", sudo_log_output) -}}
+{{ sudo_defaults_format("log_year", sudo_log_year) -}}
+{{ sudo_defaults_format("long_opt_prompt", sudo_long_opt_prompt) -}}
+{{ sudo_defaults_format("mail_all_cmnds", sudo_mail_all_cmnds) -}}
+{{ sudo_defaults_format("mail_always", sudo_mail_always) -}}
+{{ sudo_defaults_format("mail_badpass", sudo_mail_badpass) -}}
+{{ sudo_defaults_format("mail_no_host", sudo_mail_no_host) -}}
+{{ sudo_defaults_format("mail_no_perms", sudo_mail_no_perms) -}}
+{{ sudo_defaults_format("mail_no_user", sudo_mail_no_user) -}}
+{{ sudo_defaults_format("match_group_by_gid", sudo_match_group_by_gid) -}}
+{{ sudo_defaults_format("netgroup_tuple", sudo_netgroup_tuple) -}}
+{{ sudo_defaults_format("noexec", sudo_noexec) -}}
+{{ sudo_defaults_format("pam_session", sudo_pam_session) -}}
+{{ sudo_defaults_format("pam_setcred", sudo_pam_setcred) -}}
+{{ sudo_defaults_format("passprompt_override", sudo_passprompt_override) -}}
+{{ sudo_defaults_format("path_info", sudo_path_info) -}}
+{{ sudo_defaults_format("preserve_groups", sudo_preserve_groups) -}}
+{{ sudo_defaults_format("pwfeedback", sudo_pwfeedback) -}}
+{{ sudo_defaults_format("requiretty", sudo_requiretty) -}}
+{{ sudo_defaults_format("root_sudo", sudo_root_sudo) -}}
+{{ sudo_defaults_format("rootpw", sudo_rootpw) -}}
+{{ sudo_defaults_format("runaspw", sudo_runaspw) -}}
+{{ sudo_defaults_format("set_home", sudo_set_home) -}}
+{{ sudo_defaults_format("set_logname", sudo_set_logname) -}}
+{{ sudo_defaults_format("set_utmp", sudo_set_utmp) -}}
+{{ sudo_defaults_format("setenv", sudo_setenv) -}}
+{{ sudo_defaults_format("shell_noargs", sudo_shell_noargs) -}}
+{{ sudo_defaults_format("stay_setuid", sudo_stay_setuid) -}}
+{{ sudo_defaults_format("sudoedit_checkdir", sudo_sudoedit_checkdir) -}}
+{{ sudo_defaults_format("sudoedit_follow", sudo_sudoedit_follow) -}}
+{{ sudo_defaults_format("targetpw", sudo_targetpw) -}}
+{{ sudo_defaults_format("tty_tickets", sudo_tty_tickets) -}}
+{{ sudo_defaults_format("umask_override", sudo_umask_override) -}}
+{{ sudo_defaults_format("use_loginclass", sudo_use_loginclass) -}}
+{{ sudo_defaults_format("use_netgroups", sudo_use_netgroups) -}}
+{{ sudo_defaults_format("use_pty", sudo_use_pty) -}}
+{{ sudo_defaults_format("utmp_runas", sudo_utmp_runas) -}}
+{{ sudo_defaults_format("visiblepw", sudo_visiblepw) -}}
+{{ sudo_defaults_format("closefrom", sudo_closefrom) -}}
+{{ sudo_defaults_format("maxseq", sudo_maxseq) -}}
+{{ sudo_defaults_format("passwd_tries", sudo_passwd_tries) -}}
+{{ sudo_defaults_format("loginelen", sudo_loginelen) -}}
+{{ sudo_defaults_format("passwd_timeout", sudo_passwd_timeout) -}}
+{{ sudo_defaults_format("timestamp_timeout", sudo_timestamp_timeout) -}}
+{{ sudo_defaults_format("umask", sudo_umask) -}}
+{{ sudo_defaults_format("badpass_message", sudo_badpass_message) -}}
+{{ sudo_defaults_format("editor", sudo_editor) -}}
+{{ sudo_defaults_format("iolog_dir", sudo_iolog_dir) -}}
+{{ sudo_defaults_format("iolog_file", sudo_iolog_file) -}}
+{{ sudo_defaults_format("lecure_status_dir", sudo_lecure_status_dir) -}}
+{{ sudo_defaults_format("limitprivs", sudo_limitprivs) -}}
+{{ sudo_defaults_format("mailsub", sudo_mailsub) -}}
+{{ sudo_defaults_format("noexec_file", sudo_noexec_file) -}}
+{{ sudo_defaults_format("pam_login_service", sudo_pam_login_service) -}}
+{{ sudo_defaults_format("pam_service", sudo_pam_service) -}}
+{{ sudo_defaults_format("passprompt", sudo_passprompt) -}}
+{{ sudo_defaults_format("privs", sudo_privs) -}}
+{{ sudo_defaults_format("role", sudo_role) -}}
+{{ sudo_defaults_format("runas_default", sudo_runas_default) -}}
+{{ sudo_defaults_format("syslog_badpri", sudo_syslog_badpri) -}}
+{{ sudo_defaults_format("syslog_goodpri", sudo_syslog_goodpri) -}}
+{{ sudo_defaults_format("sudoers_locale", sudo_sudoers_locale) -}}
+{{ sudo_defaults_format("timestampdir", sudo_timestampdir) -}}
+{{ sudo_defaults_format("timestampowner", sudo_timestampowner) -}}
+{{ sudo_defaults_format("type", sudo_type) -}}
+{{ sudo_defaults_format("env_reset", sudo_env_reset) -}}
+{{ sudo_defaults_format("exempt_group", sudo_exempt_group) -}}
+{{ sudo_defaults_format("group_plugin", sudo_group_plugin) -}}
+{{ sudo_defaults_format("lecture", sudo_lecture) -}}
+{{ sudo_defaults_format("lecture_file", sudo_lecture_file) -}}
+{{ sudo_defaults_format("listpw", sudo_listpw) -}}
+{{ sudo_defaults_format("logfile", sudo_logfile) -}}
+{{ sudo_defaults_format("mailerflags", sudo_mailerflags) -}}
+{{ sudo_defaults_format("mailerpath", sudo_mailerpath) -}}
+{{ sudo_defaults_format("mailerfrom", sudo_mailerfrom) -}}
+{{ sudo_defaults_format("mailto", sudo_mailto) -}}
+{{ sudo_defaults_format("secure_path", sudo_secure_path) -}}
+{{ sudo_defaults_format("syslog", sudo_syslog) -}}
+{{ sudo_defaults_format("verifypw", sudo_verifypw) -}}
+{{ sudo_defaults_format("env_check", sudo_env_check) -}}
+{{ sudo_defaults_format("env_delete", sudo_env_delete) -}}
+{{ sudo_defaults_format("env_keep", sudo_env_keep) -}}
+{{ sudo_defaults_format("group_file", sudo_group_file) -}}
+{{ sudo_defaults_format("system_group", sudo_system_group) -}}
+{{ "" }}
+{% if sudo_host_aliases %}
+# Host alias specification
+{%   for name, users in sudo_host_aliases.items()|list %}
+Host_Alias {{ name | upper }} = {{ users | sudo_alias }}
+{%   endfor %}
+
+{% endif %}
+{% if sudo_user_aliases %}
+# User alias specification
+{%   for name, users in sudo_user_aliases.items()|list %}
+User_Alias {{ name | upper }} = {{ users | sudo_alias }}
+{%   endfor %}
+
+{% endif %}
+{% if sudo_cmnd_aliases %}
+# Cmnd alias specification
+{%   for name, users in sudo_cmnd_aliases.items()|list %}
+Cmnd_Alias {{ name | upper }} = {{ users | sudo_alias }}
+{%   endfor %}
+
+{% endif %}
+{% if sudo_user_defaults %}
+{%   for user, defaults in sudo_user_defaults.items()|list %}
+{%     for option, value in defaults.items()|list %}
+Defaults:{{user}} {{ option | sudo_default_parameter(value) }}
+{%     endfor %}
+{%   endfor %}
+
+{% endif %}
+{% if sudo_runas_defaults %}
+{%   for user, defaults in sudo_runas_defaults.items()|list %}
+{%     for option, value in defaults.items()|list %}
+Defaults>{{user}} {{ option | sudo_default_parameter(value) }}
+{%     endfor %}
+{%   endfor %}
+
+{% endif %}
+{% if sudo_host_defaults %}
+{%   for user, defaults in sudo_host_defaults.items()|list %}
+{%     for option, value in defaults.items()|list %}
+Defaults@{{user}} {{ option | sudo_default_parameter(value) }}
+{%     endfor %}
+{%   endfor %}
+
+{% endif %}
+{% if sudo_cmnd_defaults %}
+{%   for user, defaults in sudo_cmnd_defaults.items()|list %}
+{%     for option, value in defaults.items()|list %}
+Defaults!{{user}} {{ option | sudo_default_parameter(value) }}
+{%   endfor %}
+{%   endfor %}
+
+{% endif %}
+{% if sudo_root_user %}
+# Root User specification
+{{   sudo_root_user|sudo_user_spec(name='root') }}
+{% endif %}
+
+{% if sudo_sudo_group %}
+# Allow members of group sudo to execute any command
+{{   sudo_sudo_group|sudo_user_spec(type='group', name=sudo__sudo_group_name) }}
+{% endif %}
+
+{% if sudo_users %}
+# User specifications
+{%   for user_spec in sudo_users %}
+{{     user_spec|sudo_user_spec }}
+{%   endfor %}
+
+{% endif %}
+# See sudoers(5) for more information on "#include" directives:
+
+#includedir {{ sudo__sudoers_directory }}
