@@ -1,6 +1,8 @@
 SUDO
 ====
 
+![Test Ansible Role](https://github.com/rbrightling/ansible-sudo/workflows/Test%20Ansible%20Role/badge.svg) [![Ansible Galaxy](http://img.shields.io/badge/galaxy-rbrightling.sudo-660198.svg?style=flat)](https://galaxy.ansible.com/rbrightling/sudo)
+
 Install sudo and manage main sudoers configuration. 
 
 **Recommendations**: Set requiretty globally and specify only ansible user to not requiretty.
